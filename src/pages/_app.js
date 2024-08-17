@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCart from '../hooks/useCart';
 import Navbar from '../components/Navbar';
-import '../styles/globals.css';
+import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
   const { cart, addToCart, removeItem, updateQuantity, getTotalItems } = useCart();
