@@ -18,9 +18,6 @@ out/
 # Static files
 public/static/
 
-# Tailwind CSS build artifacts
-*.css
-*.css.map
 
 # Vercel deployment
 .vercel
