@@ -1,3 +1,5 @@
+// src/pages/cart.js
+import Image from 'next/image';
 import useCart from '../hooks/useCart';
 import { useState } from 'react';
 
@@ -39,7 +41,15 @@ const Cart = () => {
             {cart.map((item) => (
               <div key={item.id} className="flex justify-between items-center border-b py-4">
                 {/* Product Image */}
-                <img src={item.image} alt={item.title} className="w-20 h-20 object-cover" />
+                <div className="relative w-20 h-20">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded"
+                  />
+                </div>
 
                 {/* Product Details */}
                 <div className="flex-grow ml-4">
