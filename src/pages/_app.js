@@ -1,5 +1,4 @@
 // src/pages/_app.js
-import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCart from '../hooks/useCart';
