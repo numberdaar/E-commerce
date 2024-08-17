@@ -1,7 +1,16 @@
+// src/components/CartItem.js
+import Image from 'next/image';
+
 const CartItem = ({ item, handleQuantityChange, handleRemoveItem }) => {
   return (
     <div className="border p-4 flex items-center">
-      <img src={item.image} alt={item.title} className="w-24 h-24 object-cover mr-4" />
+      <Image
+        src={item.image}
+        alt={item.title}
+        width={96} // Adjust the width as needed
+        height={96} // Adjust the height as needed
+        className="object-cover mr-4"
+      />
       <div className="flex-1">
         <h2 className="text-xl font-semibold">{item.title}</h2>
         <p className="text-gray-600">${item.price}</p>
