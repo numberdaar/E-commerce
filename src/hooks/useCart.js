@@ -65,7 +65,7 @@ const useCart = () => {
   };
 
   const getTotalItems = () => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
+    return cart.length;
   };
 
   return { cart, addToCart, removeItem, updateQuantity, getTotalItems };
