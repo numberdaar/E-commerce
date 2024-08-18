@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useEffect,useState } from 'react';
 
 const useCart = () => {
   const [cart, setCart] = useState([]);
@@ -41,8 +42,15 @@ const useCart = () => {
   };
 
   const removeItem = (id) => {
+    const itemToRemove = cart.find(item => item.id === id);
     const updatedCart = cart.filter((item) => item.id !== id);
     updateCart(updatedCart);
+
+    if (itemToRemove) {
+      toast.info(`${itemToRemove.title} removed from cart`, {
+        position: 'bottom-right',
+      });
+    }
   };
 
   const updateQuantity = (id, newQuantity) => {

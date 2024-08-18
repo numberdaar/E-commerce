@@ -1,4 +1,3 @@
-// src/pages/_app.js
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCart from '../hooks/useCart';
@@ -10,8 +9,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-       <Navbar cartCount={getTotalItems()} />
-       <Component
+      <Navbar cartCount={getTotalItems()} />
+      <Component
         {...pageProps}
         cart={cart}
         addToCart={addToCart}

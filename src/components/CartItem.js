@@ -7,8 +7,8 @@ const CartItem = ({ item, handleQuantityChange, handleRemoveItem }) => {
       <Image
         src={item.image}
         alt={item.title}
-        width={96} // Adjust the width as needed
-        height={96} // Adjust the height as needed
+        width={96}
+        height={96}
         className="object-cover mr-4"
       />
       <div className="flex-1">
@@ -44,5 +44,6 @@ const CartItem = ({ item, handleQuantityChange, handleRemoveItem }) => {
     </div>
   );
 };
+
 
 export default CartItem;

@@ -1,11 +1,9 @@
 import Link from 'next/link';
-
 const Navbar = ({ cartCount }) => {
   return (
     <header className="bg-gray-800 text-white p-4 fixed w-full top-0 left-0 z-10 flex justify-between items-center">
       <h1 className="text-xl">New Dukaan</h1>
 
-      {/* Cart Icon */}
       <div className="flex items-center space-x-4">
         <Link href="/" passHref>
           <div className="relative cursor-pointer flex items-center">
@@ -35,5 +33,4 @@ const Navbar = ({ cartCount }) => {
     </header>
   );
 };
-
 export default Navbar;

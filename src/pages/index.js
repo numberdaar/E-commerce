@@ -21,10 +21,19 @@ const Home = ({ addToCart }) => {
   }, []);
 
   const handleAddToCart = (product) => {
-    addToCart(product);
-    toast.success(`${product.title} added to cart!`, {
-      position: 'bottom-right',
-    });
+    // Check if the product is already in the cart
+    const existingProduct = JSON.parse(localStorage.getItem('cart') || '[]').find(item => item.id === product.id);
+
+    if (existingProduct) {
+      toast.info(`${product.title} is already in your cart!`, {
+        position: 'bottom-right',
+      });
+    } else {
+      addToCart(product);
+      toast.success(`${product.title} added to cart!`, {
+        position: 'bottom-right',
+      });
+    }
   };
 
   return (
