@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCart } from '../context/cartContext';
 
 const Navbar = () => {
@@ -6,7 +7,21 @@ const Navbar = () => {
 
   return (
     <header className="bg-gray-800 text-white p-4 fixed w-full top-0 left-0 z-10 flex justify-between items-center">
-      <h1 className="text-xl">New Dukaan</h1>
+      {/* Logo and App Name */}
+      <Link href="/" passHref>
+        <div className="flex items-center cursor-pointer">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
+            <Image 
+              src="/logo.png" 
+              alt="New Dukaan Logo" 
+              layout="fill"
+              objectFit="cover"
+              className="rounded-full"
+            />
+          </div>
+          <h1 className="text-xl font-bold">New Dukaan</h1>
+        </div>
+      </Link>
 
       <div className="flex items-center space-x-4">
         <Link href="/" passHref>
