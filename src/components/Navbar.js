@@ -2,7 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '../context/cartContext';
 
+// Navbar component displaying logo, navigation links, and cart information
 const Navbar = () => {
+  // Access cart data using the useCart hook
   const { cart } = useCart();
 
   return (
@@ -10,6 +12,7 @@ const Navbar = () => {
       {/* Logo and App Name */}
       <Link href="/" passHref>
         <div className="flex items-center cursor-pointer">
+          {/* Logo image */}
           <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
             <Image 
               src="/logo.png" 
@@ -24,6 +27,7 @@ const Navbar = () => {
       </Link>
 
       <div className="flex items-center space-x-4">
+        {/* Home button */}
         <Link href="/" passHref>
           <div className="relative cursor-pointer flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
@@ -33,6 +37,7 @@ const Navbar = () => {
           </div>
         </Link>
 
+        {/* Cart icon with item count */}
         <Link href="/cart" passHref>
           <div className="relative cursor-pointer flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">

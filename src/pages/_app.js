@@ -1,5 +1,5 @@
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; // Import styles for toast notifications
 import Navbar from '../components/Navbar';
 import '../styles/global.css';
 import { CartProvider } from '../context/cartContext';
