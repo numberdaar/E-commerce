@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useCart } from '../context/cartContext';
 
-const Home = ({ addToCart }) => {
+const Home = () => {
   const [products, setProducts] = useState([]);
+  const { cart, addToCart, removeItem, updateQuantity, getTotalItems } = useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {

@@ -1,10 +1,15 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useEffect,useState } from 'react';
 
-const useCart = () => {
+const CartContext = createContext();
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Load cart from localStorage when the component is mounted
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -12,7 +17,6 @@ const useCart = () => {
     }
   }, []);
 
-  // Save cart to localStorage whenever it changes
   useEffect(() => {
     if (cart.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -23,7 +27,6 @@ const useCart = () => {
 
   const updateCart = (updatedCart) => {
     setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   const addToCart = (product) => {
@@ -42,7 +45,7 @@ const useCart = () => {
   };
 
   const removeItem = (id) => {
-    const itemToRemove = cart.find(item => item.id === id);
+    const itemToRemove = cart.find((item) => item.id === id);
     const updatedCart = cart.filter((item) => item.id !== id);
     updateCart(updatedCart);
 
@@ -68,7 +71,11 @@ const useCart = () => {
     return cart.length;
   };
 
-  return { cart, addToCart, removeItem, updateQuantity, getTotalItems };
+  return (
+    <CartContext.Provider
+      value={{ cart, addToCart, removeItem, updateQuantity, getTotalItems }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
-
-export default useCart;

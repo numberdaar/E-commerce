@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { useCart } from '../context/cartContext';
 
-const Navbar = ({ cartCount }) => {
+const Navbar = () => {
+  const { cart } = useCart();
+
   return (
     <header className="bg-gray-800 text-white p-4 fixed w-full top-0 left-0 z-10 flex justify-between items-center">
       <h1 className="text-xl">New Dukaan</h1>
@@ -23,9 +26,9 @@ const Navbar = ({ cartCount }) => {
               <circle cx="17" cy="20" r="1" />
             </svg>
             {/* Display the cart count */}
-            {cartCount > 0 && (
+            {cart.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {cartCount}
+                {cart.length}
               </span>
             )}
           </div>

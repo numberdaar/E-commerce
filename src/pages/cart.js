@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import useCart from '../hooks/useCart';
+import { useCart } from '../context/cartContext';
 
 const Cart = () => {
   const { cart, removeItem, updateQuantity } = useCart();
