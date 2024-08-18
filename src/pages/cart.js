@@ -4,7 +4,7 @@ import { useCart } from '../context/cartContext';
 
 const Cart = () => {
   const { cart, removeItem, updateQuantity } = useCart();
-  const [discount, setDiscount] = useState(0);
+  const discount = 10;
   const [discountType, setDiscountType] = useState('fixed');
 
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -91,14 +91,8 @@ const Cart = () => {
               </select>
 
               <label htmlFor="discountAmount" className="block mb-1">Discount Amount:</label>
-              <input
-                type="number"
-                id="discountAmount"
-                value={discount}
-                onChange={(e) => setDiscount(parseFloat(e.target.value) || 0)}
-                className="p-2 border rounded-md"
-                placeholder="Enter discount"
-              />
+              <p className="p-2 border rounded-md">
+                    {discountType === 'fixed' ? `$${discount} off` : `${discount}% off`}</p>
             </div>
 
             <p className="text-lg mb-2">Discount: <span className="font-semibold">-${totalDiscount.toFixed(2)}</span></p>
