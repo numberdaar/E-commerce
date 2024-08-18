@@ -6,7 +6,7 @@ import { useCart } from '../context/cartContext';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const { cart, addToCart, removeItem, updateQuantity, getTotalItems } = useCart();
+  const { addToCart, removeItem, cart } = useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,14 +22,11 @@ const Home = () => {
     fetchProducts();
   }, []);
 
-  const handleAddToCart = (product) => {
-    // Check if the product is already in the cart
-    const existingProduct = JSON.parse(localStorage.getItem('cart') || '[]').find(item => item.id === product.id);
-
-    if (existingProduct) {
-      toast.info(`${product.title} is already in your cart!`, {
-        position: 'bottom-right',
-      });
+  // Popup notification
+  const handleAddOrRemoveFromCart = (product) => {
+    const isInCart = cart.some((item) => item.id === product.id);
+    if (isInCart) {
+      removeItem(product.id);
     } else {
       addToCart(product);
       toast.success(`${product.title} added to cart!`, {
@@ -46,7 +43,7 @@ const Home = () => {
           <ProductCard
             key={product.id}
             product={product}
-            onAddToCart={() => handleAddToCart(product)}
+            onAddToCart={() => handleAddOrRemoveFromCart(product)}
           />
         ))}
       </div>

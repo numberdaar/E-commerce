@@ -9,11 +9,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
     <CartProvider>
-
       <Navbar />
       <Component
         {...pageProps}
-       
         />
       <ToastContainer />
       </CartProvider>
